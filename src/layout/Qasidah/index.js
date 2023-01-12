@@ -7,7 +7,7 @@ const Qasidah = () => {
   // User is currently on this page
   const [currentPage, setCurrentPage] = useState(1);
   // No of Records to be displayed on each page
-  const [recordsPerPage] = useState(10);
+  const [recordsPerPage, setRecords] = useState(5);
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   const nPages = Math.ceil(data.length / recordsPerPage);
@@ -35,23 +35,37 @@ const Qasidah = () => {
   };
   return (
     <div className="container mt-3">
-      <div className="row">
-        <div className="col-md-8">
-          <div className="row">
-            <div className="col-md-10">
-              <h2 style={{ color: "#09755E" }}>Daftar Qasidah</h2>
-            </div>
-            <div className="col-md-2">
-              <Link
-                to={`add`}
-                className="btn text-light btn-sm"
-                style={{ backgroundColor: "#09755E" }}
-              >
-                Tambah
-              </Link>
-            </div>
+      <h2 style={{ color: "#09755E" }}>Daftar Qasidah</h2>
+      <div className="card mt-4">
+        <div
+          className="card-header px-4 d-flex justify-content-between align-items-center"
+          style={{ color: "#09755E", fontWeight: "normal" }}
+        >
+          {/* Data Qasidah */}
+          <Link
+            to={`add`}
+            className="btn text-light btn-sm"
+            style={{ backgroundColor: "#09755E" }}
+          >
+            Tambah
+          </Link>
+          <div className="form-group">
+            <select
+              className="form-select"
+              value={recordsPerPage}
+              onChange={(e) => setRecords(e.target.value)}
+            >
+              <option valuename={5}>5</option>
+              <option valuename={10}>10</option>
+              <option valuename={20}>20</option>
+              <option valuename={30}>30</option>
+              <option valuename={40}>40</option>
+              <option valuename={50}>50</option>
+            </select>
           </div>
-          <table className="table mt-4">
+        </div>
+        <div className="card-body">
+          <table className="table table-striped" id="myTable">
             <thead>
               <tr>
                 <th scope="col">No</th>
@@ -59,49 +73,58 @@ const Qasidah = () => {
                 <th scope="col">Arabic</th>
                 <th scope="col">Version</th>
                 <th scope="col">Tipe</th>
-                <th scope="col"></th>
+                <th scope="col">#</th>
               </tr>
             </thead>
             <tbody>
-              {data.slice(indexOfFirstRecord, indexOfLastRecord).map((dataQasidah, index) => {
-                return (
-                  <tr key={index}>
-                    <th scope="row">{index + 1}</th>
-                    <td>{dataQasidah.title}</td>
-                    <td>{dataQasidah.title_arabic}</td>
-                    <td>{dataQasidah.version}</td>
-                    <td>{dataQasidah.tipe}</td>
-                    <td>
-                      <Link
-                        to={`detail/${dataQasidah._id}`}
-                        className="btn badge rounded-pill hover:text-white text-white mx-2"
-                        style={{ backgroundColor: "#09755E" }}
-                      >
-                        Detail
-                      </Link>
-                      <Link
-                        to={`edit/${dataQasidah._id}`}
-                        className="btn badge rounded-pill hover:text-white text-white btn-primary mx-2"
-                      >
-                        Update
-                      </Link>
-                      <button
-                        onClick={() => deleteQasidah(dataQasidah._id)}
-                        className="btn badge rounded-pill hover:text-white text-white btn-danger mx-2"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
+              {data
+                .slice(indexOfFirstRecord, indexOfLastRecord)
+                .map((dataQasidah, index) => {
+                  return (
+                    <tr key={index}>
+                      <th scope="row">
+                        {recordsPerPage * (currentPage - 1) + index + 1}
+                      </th>
+                      <td>{dataQasidah.title}</td>
+                      <td>{dataQasidah.title_arabic}</td>
+                      <td>{dataQasidah.version}</td>
+                      <td>{dataQasidah.tipe}</td>
+                      <td>
+                        <Link
+                          to={`detail/${dataQasidah._id}`}
+                          className="btn badge rounded-pill hover:text-white text-white mx-2"
+                          style={{ backgroundColor: "#09755E" }}
+                        >
+                          Detail
+                        </Link>
+                        <Link
+                          to={`edit/${dataQasidah._id}`}
+                          className="btn badge rounded-pill hover:text-white text-white btn-primary mx-2"
+                        >
+                          Update
+                        </Link>
+                        <button
+                          onClick={() => deleteQasidah(dataQasidah._id)}
+                          className="btn badge rounded-pill hover:text-white text-white btn-danger mx-2"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
-          <Pagination
-                nPages={nPages}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
+          <div className="p-2 justify-content-between align-items-center d-flex">
+            <p>
+              Showing {indexOfFirstRecord + 1} to {indexOfLastRecord} from {data.length} entries
+            </p>
+            <Pagination
+              nPages={nPages}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
             />
+          </div>
         </div>
       </div>
     </div>

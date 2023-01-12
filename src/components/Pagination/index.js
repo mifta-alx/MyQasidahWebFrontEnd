@@ -12,26 +12,27 @@ export default function Pagination({ nPages, currentPage, setCurrentPage }) {
     <nav>
       <ul className="pagination justify-content-center">
         <li className={`page-item ${currentPage == 1 ? "disabled" : ""}`}>
-          <a className="page-link" onClick={prevPage} href="#">
+          <a className="page-link" onClick={prevPage} href="#" style={{color: currentPage == 1 ? "" : "#09755E"}}>
             Previous
           </a>
         </li>
         {pageNumbers.map((pgNumber) => (
           <li
             key={pgNumber}
-            className={`page-item ${currentPage == pgNumber ? "active" : ""} `}
+            className={`page-item ${currentPage == pgNumber ? "active" : ""}`}
           >
             <a
               onClick={() => setCurrentPage(pgNumber)}
               className="page-link"
               href="#"
+              style={{backgroundColor: currentPage == pgNumber ? "#09755E" : "#FFFFFF", color: currentPage == pgNumber ? "#FFFFFF" : "#09755E", borderColor: currentPage == pgNumber ? "#09755E" : ""}}
             >
               {pgNumber}
             </a>
           </li>
         ))}
         <li className="page-item">
-          <a className="page-link" onClick={nextPage} href="#">
+          <a className="page-link" onClick={nextPage} href="#" style={{color: "#09755E"}}>
             Next
           </a>
         </li>
