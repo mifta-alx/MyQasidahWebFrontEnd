@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Pagination } from "../../components";
 const Qasidah = () => {
   const [data, setData] = useState([]);
@@ -73,7 +73,7 @@ const Qasidah = () => {
                 <th scope="col">Arabic</th>
                 <th scope="col">Version</th>
                 <th scope="col">Tipe</th>
-                <th scope="col">#</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
@@ -117,7 +117,7 @@ const Qasidah = () => {
           </table>
           <div className="p-2 justify-content-between align-items-center d-flex">
             <p>
-              Showing {indexOfFirstRecord + 1} to {indexOfLastRecord} from {data.length} entries
+              Showing {indexOfFirstRecord + 1} to {indexOfLastRecord == recordsPerPage ? indexOfLastRecord : data.length} from {data.length} entries
             </p>
             <Pagination
               nPages={nPages}

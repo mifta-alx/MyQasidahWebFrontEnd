@@ -51,7 +51,7 @@ export default function EditQasidah() {
     setReff([
       ...reff,
       {
-        parent: "",
+        parent: "baris_"+(reff.length+1),
         reff: [],
       },
     ]);
@@ -94,7 +94,7 @@ export default function EditQasidah() {
     setLirik([
       ...lirik,
       {
-        parent:"",
+        parent:"baris_"+(lirik.length+1),
         lirik: [],
       },
     ]);
@@ -135,11 +135,11 @@ export default function EditQasidah() {
     <div className="container my-3">
       <div className="row">
         <div className="col-md-12">
-          <h2 style={{ color: "#09755E" }}>Tambah Qasidah</h2>
+          <h2 style={{ color: "#09755E" }}>Edit Qasidah</h2>
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href={`./`} style={{ color: "#09755E" }}>
+                <a href={`../`} style={{ color: "#09755E" , textDecoration:'none' }}>
                   Qasidah
                 </a>
               </li>
@@ -201,13 +201,15 @@ export default function EditQasidah() {
                             <div className="col-10 mb-3">
                               <input
                                 type="text"
-                                value={data.parent}
+                                // value={data.parent}
                                 className="form-control"
                                 id="reff"
                                 name="reff"
                                 onChange={(e) =>
                                   handleInputChangeParentReff(e, index)
                                 }
+                                defaultValue={"baris_" + (index + 1)}
+                                disabled
                               />
                             </div>
                             {/* <div className="col-2"> */}
@@ -309,13 +311,15 @@ export default function EditQasidah() {
                             <div className="col-9 mb-3">
                               <input
                                 type="text"
-                                value={data.parent}
+                                // value={data.parent}
                                 className="form-control"
                                 id="lirik"
                                 name="lirik"
                                 onChange={(e) =>
                                   handleInputChangeParentLirik(e, index)
                                 }
+                                defaultValue={"baris_" + (index + 1)}
+                                disabled
                               />
                             </div>
                             {/* <div className="col-2"> */}

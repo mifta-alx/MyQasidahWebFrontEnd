@@ -28,7 +28,7 @@ function DetailQasidah() {
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href={`../`} style={{ color: "#09755E" }}>
+              <a href={`../`} style={{ color: "#09755E" , textDecoration:'none' }}>
                 Qasidah
               </a>
             </li>
