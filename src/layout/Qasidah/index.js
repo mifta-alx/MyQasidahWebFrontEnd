@@ -65,7 +65,8 @@ const Qasidah = () => {
           </div>
         </div>
         <div className="card-body">
-          <table className="table table-striped" id="myTable">
+        <div class="table-responsive">
+          <table className="table table-striped">
             <thead>
               <tr>
                 <th scope="col">No</th>
@@ -115,6 +116,7 @@ const Qasidah = () => {
                 })}
             </tbody>
           </table>
+          </div>
           <div className="p-2 justify-content-between align-items-center d-flex">
             <p>
               Showing {indexOfFirstRecord + 1} to {indexOfLastRecord === recordsPerPage ? indexOfLastRecord : data.length} from {data.length} entries

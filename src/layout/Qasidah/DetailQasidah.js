@@ -52,8 +52,8 @@ function DetailQasidah() {
                     {data.reff.slice(0).reverse().map((subr, indexsub) => {
                       const styleDot =
                         subr.subreff === "۰۞۰"
-                          ? "col-md-2 d-flex justify-content-center"
-                          : "col-md-5 d-flex justify-content-center";
+                          ? "col-2 d-flex justify-content-center"
+                          : "col-5 d-flex justify-content-center";
                           if(data.reff.length > 1){
                             return (
                               <div
@@ -101,8 +101,8 @@ function DetailQasidah() {
                     {data.lirik.slice(0).reverse().map((subl, indexsub) => {
                       const styleDot =
                         subl.sublirik === "۰۞۰"
-                          ? "col-md-2 d-flex justify-content-center"
-                          : "col-md-5 d-flex justify-content-center";
+                          ? "col-2 d-flex justify-content-center"
+                          : "col-5 d-flex justify-content-center";
                           if(data.lirik.length > 1){
                             return (
                               <div

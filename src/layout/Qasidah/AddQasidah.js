@@ -197,7 +197,7 @@ export default function AddQasidah() {
                       <div className="row">
                         <div className="col-md-12">
                           <div className="row">
-                            <div className="col-9 mb-3">
+                            <div className="col-8 col-md-9 mb-3">
                               <input
                                 type="text"
                                 // value={data.parent}
@@ -227,7 +227,7 @@ export default function AddQasidah() {
                                   </a>
                                 )} */}
                             {reff.length !== 1 && (
-                              <div className="col-1">
+                              <div className="col-2 col-md-1">
                                 <button
                                   className="btn btn-danger"
                                   onClick={() => handleRemoveParentReff(index)}
@@ -281,7 +281,7 @@ export default function AddQasidah() {
                                 </div>
                               );
                             })}
-                            <div className="col-3">
+                            <div className="col-auto">
                               <button
                                 className="btn btn-primary"
                                 onClick={() => handleAddSubReff(index)}
@@ -305,7 +305,7 @@ export default function AddQasidah() {
                       <div className="row">
                         <div className="col-md-12">
                           <div className="row">
-                            <div className="col-9 mb-3">
+                            <div className="col-8 col-md-9 mb-3">
                               <input
                                 type="text"
                                 // value={data.parent}
@@ -335,7 +335,7 @@ export default function AddQasidah() {
                                   </a>
                                 )} */}
                             {lirik.length !== 1 && (
-                              <div className="col-1">
+                              <div className=" col-2 col-md-1">
                                 <button
                                   className="btn btn-danger"
                                   onClick={() => handleRemoveParentLirik(index)}
@@ -389,7 +389,7 @@ export default function AddQasidah() {
                                 </div>
                               );
                             })}
-                            <div className="col-3">
+                            <div className="col-auto">
                               <button
                                 className="btn btn-primary"
                                 onClick={() => handleAddSubLirik(index)}
