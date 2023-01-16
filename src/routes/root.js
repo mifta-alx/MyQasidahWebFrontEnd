@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Outlet, Link } from "react-router-dom";
 
 // Bootstrap CSS
@@ -11,7 +11,7 @@ export default function Nav() {
     <>
       <nav className="navbar navbar-expand-lg" style={{backgroundColor: '#09755E'}}>
         <div className="container">
-          <a className="navbar-brand text-white" href="#">
+          <a className="navbar-brand text-white" href={() => false}>
             MyQasidah
           </a>
           <button
