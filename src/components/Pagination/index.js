@@ -11,29 +11,29 @@ export default function Pagination({ nPages, currentPage, setCurrentPage }) {
   return (
     <nav>
       <ul className="pagination justify-content-center">
-        <li className={`page-item ${currentPage == 1 ? "disabled" : ""}`}>
-          <a className="page-link" onClick={prevPage} style={{color: currentPage == 1 ? "" : "#09755E"}}>
+        <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+          <button className="page-link" onClick={prevPage} style={{color: currentPage === 1 ? "" : "#09755E"}}>
             Previous
-          </a>
+          </button>
         </li>
         {pageNumbers.map((pgNumber) => (
           <li
             key={pgNumber}
-            className={`page-item ${currentPage == pgNumber ? "active" : ""}`}
+            className={`page-item ${currentPage === pgNumber ? "active" : ""}`}
           >
-            <a
+            <button
               onClick={() => setCurrentPage(pgNumber)}
               className="page-link"
-              style={{backgroundColor: currentPage == pgNumber ? "#09755E" : "#FFFFFF", color: currentPage == pgNumber ? "#FFFFFF" : "#09755E", borderColor: currentPage == pgNumber ? "#09755E" : ""}}
+              style={{backgroundColor: currentPage === pgNumber ? "#09755E" : "#FFFFFF", color: currentPage === pgNumber ? "#FFFFFF" : "#09755E", borderColor: currentPage === pgNumber ? "#09755E" : ""}}
             >
               {pgNumber}
-            </a>
+            </button>
           </li>
         ))}
         <li className="page-item">
-          <a className="page-link" onClick={nextPage} style={{color: "#09755E"}}>
+          <button className="page-link" onClick={nextPage} style={{color: "#09755E"}}>
             Next
-          </a>
+          </button>
         </li>
       </ul>
     </nav>

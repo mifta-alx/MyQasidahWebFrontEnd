@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FiTrash, FiPlus } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 
@@ -228,22 +228,22 @@ export default function AddQasidah() {
                                 )} */}
                             {reff.length !== 1 && (
                               <div className="col-1">
-                                <a
+                                <button
                                   className="btn btn-danger"
                                   onClick={() => handleRemoveParentReff(index)}
                                 >
                                   <FiTrash />
-                                </a>
+                                </button>
                               </div>
                             )}
                             {reff.length - 1 === index && (
                               <div className="col-1">
-                                <a
+                                <button
                                   className="btn btn-success"
                                   onClick={() => handleAddParentReff()}
                                 >
                                   <FiPlus />
-                                </a>
+                                </button>
                               </div>
                             )}
                           </div>
@@ -268,27 +268,27 @@ export default function AddQasidah() {
                                       />
                                     </div>
                                     <div className="col-2">
-                                      <a
+                                      <button
                                         className="btn btn-danger"
                                         onClick={() =>
                                           handleRemoveSubReff(indexsub, index)
                                         }
                                       >
                                         <FiTrash />
-                                      </a>
+                                      </button>
                                     </div>
                                   </div>
                                 </div>
                               );
                             })}
                             <div className="col-3">
-                              <a
+                              <button
                                 className="btn btn-primary"
                                 onClick={() => handleAddSubReff(index)}
                               >
                                 <FiPlus />
                                 Sub Reff
-                              </a>
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -336,22 +336,22 @@ export default function AddQasidah() {
                                 )} */}
                             {lirik.length !== 1 && (
                               <div className="col-1">
-                                <a
+                                <button
                                   className="btn btn-danger"
                                   onClick={() => handleRemoveParentLirik(index)}
                                 >
                                   <FiTrash />
-                                </a>
+                                </button>
                               </div>
                             )}
                             {lirik.length - 1 === index && (
                               <div className="col-1">
-                                <a
+                                <button
                                   className="btn btn-success"
                                   onClick={() => handleAddParentLirik()}
                                 >
                                   <FiPlus />
-                                </a>
+                                </button>
                               </div>
                             )}
                           </div>
@@ -376,27 +376,27 @@ export default function AddQasidah() {
                                       />
                                     </div>
                                     <div className="col-2">
-                                      <a
+                                      <button
                                         className="btn btn-danger"
                                         onClick={() =>
                                           handleRemoveSubLirik(indexsub, index)
                                         }
                                       >
                                         <FiTrash />
-                                      </a>
+                                      </button>
                                     </div>
                                   </div>
                                 </div>
                               );
                             })}
                             <div className="col-3">
-                              <a
+                              <button
                                 className="btn btn-primary"
                                 onClick={() => handleAddSubLirik(index)}
                               >
                                 <FiPlus />
                                 Sub Lirik
-                              </a>
+                              </button>
                             </div>
                           </div>
                         </div>

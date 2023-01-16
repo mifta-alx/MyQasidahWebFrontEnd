@@ -117,7 +117,7 @@ const Qasidah = () => {
           </table>
           <div className="p-2 justify-content-between align-items-center d-flex">
             <p>
-              Showing {indexOfFirstRecord + 1} to {indexOfLastRecord == recordsPerPage ? indexOfLastRecord : data.length} from {data.length} entries
+              Showing {indexOfFirstRecord + 1} to {indexOfLastRecord === recordsPerPage ? indexOfLastRecord : data.length} from {data.length} entries
             </p>
             <Pagination
               nPages={nPages}

@@ -10,17 +10,17 @@ function DetailQasidah() {
   const [lirik, setLirik] = useState([]);
   const { id } = useParams();
 
-  const getQasidahById = async () => {
-    const res = await axios.get(`https://myqasidah.up.railway.app/qasidahs/${id}`);
-    setTitle(res.data.title);
-    setTitleArabic(res.data.title_arabic);
-    setVersion(res.data.version);
-    setReff(res.data.textreff);
-    setLirik(res.data.textlirik);
-  };
   useEffect(() => {
+    const getQasidahById = async () => {
+      const res = await axios.get(`https://myqasidah.up.railway.app/qasidahs/${id}`);
+      setTitle(res.data.title);
+      setTitleArabic(res.data.title_arabic);
+      setVersion(res.data.version);
+      setReff(res.data.textreff);
+      setLirik(res.data.textlirik);
+    };
     getQasidahById();
-  }, []);
+  }, [id]);
   return (
     <div className="container mt-3">
       <div className="col-md-12">
@@ -51,7 +51,7 @@ function DetailQasidah() {
                   <div key={index} className="row" style={{flexWrap:'wrap-reverse'}}>
                     {data.reff.slice(0).reverse().map((subr, indexsub) => {
                       const styleDot =
-                        subr.subreff == "۰۞۰"
+                        subr.subreff === "۰۞۰"
                           ? "col-md-2 d-flex justify-content-center"
                           : "col-md-5 d-flex justify-content-center";
                           if(data.reff.length > 1){
@@ -92,13 +92,7 @@ function DetailQasidah() {
               })}
             </div>
             {
-             reff.map((data, index) => {
-              if (data.reff) {
-                return(
-                  <div style={{ height: 1, backgroundColor: "black" }} key={index}/>
-                )
-              }
-             })
+              reff.length !== 0 && <div style={{ height: 1, backgroundColor: "black" }}/>
             }
             <div className="my-3">
               {lirik.map((data, index) => {
@@ -106,7 +100,7 @@ function DetailQasidah() {
                   <div key={index} className="row" style={{flexWrap:'wrap-reverse'}}>
                     {data.lirik.slice(0).reverse().map((subl, indexsub) => {
                       const styleDot =
-                        subl.sublirik == "۰۞۰"
+                        subl.sublirik === "۰۞۰"
                           ? "col-md-2 d-flex justify-content-center"
                           : "col-md-5 d-flex justify-content-center";
                           if(data.lirik.length > 1){
