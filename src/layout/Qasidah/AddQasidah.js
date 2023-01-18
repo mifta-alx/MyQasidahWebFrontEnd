@@ -24,17 +24,17 @@ export default function AddQasidah() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const textreff = reff.map(({ parent, reff }) => ({parent,reff}));
+    const textreff = reff.map(({ parent, reff }) => ({ parent, reff }));
     const textlirik = lirik.map(({ parent, lirik }) => ({ parent, lirik }));
     try {
-      await axios.post("https://myqasidah.up.railway.app/qasidahs", {
+      await axios.post("http://localhost:3001/qasidahs", {
         title,
         title_arabic,
         version,
         tipe,
         textreff,
         textlirik,
-      })
+      });
       navigate("/qasidah");
     } catch (e) {
       console.log(e);
@@ -45,7 +45,7 @@ export default function AddQasidah() {
     setReff([
       ...reff,
       {
-        parent: "baris_"+(reff.length+1),
+        parent: "baris_" + (reff.length + 1),
         reff: [],
       },
     ]);
@@ -88,7 +88,7 @@ export default function AddQasidah() {
     setLirik([
       ...lirik,
       {
-        parent: "baris_"+(lirik.length+1),
+        parent: "baris_" + (lirik.length + 1),
         lirik: [],
       },
     ]);
@@ -134,7 +134,10 @@ export default function AddQasidah() {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href={`./`} style={{ color: "#09755E" , textDecoration:'none'}}>
+                <a
+                  href={`./`}
+                  style={{ color: "#09755E", textDecoration: "none" }}
+                >
                   Qasidah
                 </a>
               </li>
@@ -228,22 +231,24 @@ export default function AddQasidah() {
                                 )} */}
                             {reff.length !== 1 && (
                               <div className="col-2 col-md-1">
-                                <button
+                                <a
+                                  href="/#"
                                   className="btn btn-danger"
                                   onClick={() => handleRemoveParentReff(index)}
                                 >
                                   <FiTrash />
-                                </button>
+                                </a>
                               </div>
                             )}
                             {reff.length - 1 === index && (
                               <div className="col-1">
-                                <button
+                                <a
+                                  href="/#"
                                   className="btn btn-success"
                                   onClick={() => handleAddParentReff()}
                                 >
                                   <FiPlus />
-                                </button>
+                                </a>
                               </div>
                             )}
                           </div>
@@ -268,27 +273,29 @@ export default function AddQasidah() {
                                       />
                                     </div>
                                     <div className="col-2">
-                                      <button
+                                      <a
+                                        href="/#"
                                         className="btn btn-danger"
                                         onClick={() =>
                                           handleRemoveSubReff(indexsub, index)
                                         }
                                       >
                                         <FiTrash />
-                                      </button>
+                                      </a>
                                     </div>
                                   </div>
                                 </div>
                               );
                             })}
                             <div className="col-auto">
-                              <button
+                              <a
+                                href="/#"
                                 className="btn btn-primary"
                                 onClick={() => handleAddSubReff(index)}
                               >
                                 <FiPlus />
                                 Sub Reff
-                              </button>
+                              </a>
                             </div>
                           </div>
                         </div>
@@ -336,22 +343,24 @@ export default function AddQasidah() {
                                 )} */}
                             {lirik.length !== 1 && (
                               <div className=" col-2 col-md-1">
-                                <button
+                                <a
+                                  href="/#"
                                   className="btn btn-danger"
                                   onClick={() => handleRemoveParentLirik(index)}
                                 >
                                   <FiTrash />
-                                </button>
+                                </a>
                               </div>
                             )}
                             {lirik.length - 1 === index && (
                               <div className="col-1">
-                                <button
+                                <a
+                                  href="/#"
                                   className="btn btn-success"
                                   onClick={() => handleAddParentLirik()}
                                 >
                                   <FiPlus />
-                                </button>
+                                </a>
                               </div>
                             )}
                           </div>
@@ -376,27 +385,29 @@ export default function AddQasidah() {
                                       />
                                     </div>
                                     <div className="col-2">
-                                      <button
+                                      <a
+                                        href="/#"
                                         className="btn btn-danger"
                                         onClick={() =>
                                           handleRemoveSubLirik(indexsub, index)
                                         }
                                       >
                                         <FiTrash />
-                                      </button>
+                                      </a>
                                     </div>
                                   </div>
                                 </div>
                               );
                             })}
                             <div className="col-auto">
-                              <button
+                              <a
+                                href="/#"
                                 className="btn btn-primary"
                                 onClick={() => handleAddSubLirik(index)}
                               >
                                 <FiPlus />
                                 Sub Lirik
-                              </button>
+                              </a>
                             </div>
                           </div>
                         </div>

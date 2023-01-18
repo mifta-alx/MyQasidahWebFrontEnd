@@ -13,10 +13,10 @@ export default function EditQasidah() {
   const [lirik, setLirik] = useState([]);
   const navigate = useNavigate();
   const { id } = useParams();
-  
+
   useEffect(() => {
     const getQasidahById = async () => {
-      const res = await axios.get(`https://myqasidah.up.railway.app/qasidahs/${id}`);
+      const res = await axios.get(`http://localhost:3001/qasidahs/${id}`);
       setTitle(res.data.title);
       setTitleArabic(res.data.title_arabic);
       setVersion(res.data.version);
@@ -26,21 +26,19 @@ export default function EditQasidah() {
     };
     getQasidahById();
   }, [id]);
-  
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const textreff = reff.map(({ parent, reff }) => ({ parent, reff }));
     const textlirik = lirik.map(({ parent, lirik }) => ({ parent, lirik }));
     try {
-      await axios.put(`https://myqasidah.up.railway.app/qasidahs/${id}`, {
+      await axios.put(`http://localhost:3001/qasidahs/${id}`, {
         title,
         title_arabic,
         version,
         tipe,
         textreff,
-        textlirik
+        textlirik,
       });
       navigate("/qasidah");
     } catch (e) {
@@ -52,7 +50,7 @@ export default function EditQasidah() {
     setReff([
       ...reff,
       {
-        parent: "baris_"+(reff.length+1),
+        parent: "baris_" + (reff.length + 1),
         reff: [],
       },
     ]);
@@ -95,7 +93,7 @@ export default function EditQasidah() {
     setLirik([
       ...lirik,
       {
-        parent:"baris_"+(lirik.length+1),
+        parent: "baris_" + (lirik.length + 1),
         lirik: [],
       },
     ]);
@@ -140,7 +138,10 @@ export default function EditQasidah() {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href={`../`} style={{ color: "#09755E" , textDecoration:'none' }}>
+                <a
+                  href={`../`}
+                  style={{ color: "#09755E", textDecoration: "none" }}
+                >
                   Qasidah
                 </a>
               </li>
@@ -185,13 +186,17 @@ export default function EditQasidah() {
             </div>
             <div className="mb-3">
               <label className="form-label">Tipe</label>
-              <select className="form-select" value={tipe} onChange={(e) => setTipe(e.target.value)}>
+              <select
+                className="form-select"
+                value={tipe}
+                onChange={(e) => setTipe(e.target.value)}
+              >
                 <option valuename="Arabic">Arabic</option>
                 <option valuename="Indonesia">Indonesia</option>
               </select>
             </div>
             <div className="row">
-            <div className="col-md-6">
+              <div className="col-md-6">
                 {reff.map((data, index) => {
                   return (
                     <div className="mb-3" key={index}>
@@ -214,7 +219,7 @@ export default function EditQasidah() {
                               />
                             </div>
                             {/* <div className="col-2"> */}
-                              {/* {index !== 0 ? (
+                            {/* {index !== 0 ? (
                                 <a
                                   className="btn btn-danger"
                                   onClick={() => handleRemoveParentReff(index)}
@@ -229,24 +234,24 @@ export default function EditQasidah() {
                                   <FiPlus />
                                 </a>
                               )} */}
-                              {reff.length !== 1 && (
+                            {reff.length !== 1 && (
                               <div className="col-2 col-md-1">
-                                <button
+                                <a
                                   className="btn btn-danger"
                                   onClick={() => handleRemoveParentReff(index)}
                                 >
                                   <FiTrash />
-                                </button>
+                                </a>
                               </div>
                             )}
                             {reff.length - 1 === index && (
                               <div className="col-1">
-                                <button
+                                <a
                                   className="btn btn-success"
                                   onClick={() => handleAddParentReff()}
                                 >
                                   <FiPlus />
-                                </button>
+                                </a>
                               </div>
                             )}
                             {/* </div> */}
@@ -272,27 +277,27 @@ export default function EditQasidah() {
                                       />
                                     </div>
                                     <div className="col-2">
-                                      <button
+                                      <a
                                         className="btn btn-danger"
                                         onClick={() =>
                                           handleRemoveSubReff(indexsub, index)
                                         }
                                       >
                                         <FiTrash />
-                                      </button>
+                                      </a>
                                     </div>
                                   </div>
                                 </div>
                               );
                             })}
                             <div className="col-auto">
-                              <button
+                              <a
                                 className="btn btn-primary"
                                 onClick={() => handleAddSubReff(index)}
                               >
                                 <FiPlus />
                                 Sub Reff
-                              </button>
+                              </a>
                             </div>
                           </div>
                         </div>
@@ -302,7 +307,7 @@ export default function EditQasidah() {
                 })}
               </div>
               <div className="col-md-6">
-              {lirik.map((data, index) => {
+                {lirik.map((data, index) => {
                   return (
                     <div className="mb-3" key={index}>
                       <label className="form-label">Lirik</label>
@@ -324,7 +329,7 @@ export default function EditQasidah() {
                               />
                             </div>
                             {/* <div className="col-2"> */}
-                              {/* {index !== 0 ? (
+                            {/* {index !== 0 ? (
                                 <a
                                   className="btn btn-danger"
                                   onClick={() => handleRemoveParentLirik(index)}
@@ -339,24 +344,24 @@ export default function EditQasidah() {
                                   <FiPlus />
                                 </a>
                               )} */}
-                              {lirik.length !== 1 && (
+                            {lirik.length !== 1 && (
                               <div className="col-2 col-md-1">
-                                <button
+                                <a
                                   className="btn btn-danger"
                                   onClick={() => handleRemoveParentLirik(index)}
                                 >
                                   <FiTrash />
-                                </button>
+                                </a>
                               </div>
                             )}
                             {lirik.length - 1 === index && (
                               <div className="col-1">
-                                <button
+                                <a
                                   className="btn btn-success"
                                   onClick={() => handleAddParentLirik()}
                                 >
                                   <FiPlus />
-                                </button>
+                                </a>
                               </div>
                             )}
                             {/* </div> */}
@@ -396,13 +401,13 @@ export default function EditQasidah() {
                               );
                             })}
                             <div className="col-auto">
-                              <button
+                              <a
                                 className="btn btn-primary"
                                 onClick={() => handleAddSubLirik(index)}
                               >
                                 <FiPlus />
                                 Sub Lirik
-                              </button>
+                              </a>
                             </div>
                           </div>
                         </div>

@@ -12,7 +12,7 @@ function DetailQasidah() {
 
   useEffect(() => {
     const getQasidahById = async () => {
-      const res = await axios.get(`https://myqasidah.up.railway.app/qasidahs/${id}`);
+      const res = await axios.get(`http://localhost:3001/qasidahs/${id}`);
       setTitle(res.data.title);
       setTitleArabic(res.data.title_arabic);
       setVersion(res.data.version);
@@ -38,7 +38,7 @@ function DetailQasidah() {
           </ol>
         </nav>
         <div className="d-flex justify-content-center">
-          <div className="col-sm-12 col-xl-6">
+          <div className="col-sm-12 col-xl-8">
             <div className="d-flex justify-content-center">
               <h1 className="">{title_arabic}</h1>
             </div>
