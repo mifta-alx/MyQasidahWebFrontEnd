@@ -17,7 +17,7 @@ const Qasidah = () => {
   const getUsers = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/qasidahs"
+        "https://myqasidah.up.railway.app/qasidahs"
       );
       setData(response.data);
     } catch (e) {
@@ -27,7 +27,7 @@ const Qasidah = () => {
 
   const deleteQasidah = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/qasidahs/${id}`);
+      await axios.delete(`https://myqasidah.up.railway.app/qasidahs/${id}`);
       getUsers();
     } catch (e) {
       console.log(e);

@@ -16,7 +16,7 @@ export default function EditQasidah() {
 
   useEffect(() => {
     const getQasidahById = async () => {
-      const res = await axios.get(`http://localhost:3001/qasidahs/${id}`);
+      const res = await axios.get(`https://myqasidah.up.railway.app/qasidahs/${id}`);
       setTitle(res.data.title);
       setTitleArabic(res.data.title_arabic);
       setVersion(res.data.version);
@@ -32,7 +32,7 @@ export default function EditQasidah() {
     const textreff = reff.map(({ parent, reff }) => ({ parent, reff }));
     const textlirik = lirik.map(({ parent, lirik }) => ({ parent, lirik }));
     try {
-      await axios.put(`http://localhost:3001/qasidahs/${id}`, {
+      await axios.put(`https://myqasidah.up.railway.app/qasidahs/${id}`, {
         title,
         title_arabic,
         version,
