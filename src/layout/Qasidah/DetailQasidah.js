@@ -26,7 +26,7 @@ function DetailQasidah() {
 
   useEffect(() => {
     const getQasidahById = async () => {
-      const res = await axios.get(`http://localhost:3001/qasidahs/${id}`);
+      const res = await axios.get(`https://myqasidah.up.railway.app/qasidahs/${id}`);
       setTitle(res.data.title);
       setTitleArabic(res.data.title_arabic);
       setVersion(res.data.version);
