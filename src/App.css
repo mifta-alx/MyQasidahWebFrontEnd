@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+    font-family: "PlusJakartaSans-Bold";   /*Can be any text*/
+    src: local("PlusJakartaSans-Bold"),
+      url("./fonts/PlusJakartaSans-Bold.ttf") format("truetype");
+}
+@font-face {
+    font-family: "PlusJakartaSans-BoldItalic";   /*Can be any text*/
+    src: local("PlusJakartaSans-BoldItalic"),
+      url("./fonts/PlusJakartaSans-BoldItalic.ttf") format("truetype");
+}
+@font-face {
+    font-family: "PlusJakartaSans-ExtraBold";   /*Can be any text*/
+    src: local("PlusJakartaSans-ExtraBold"),
+      url("./fonts/PlusJakartaSans-ExtraBold.ttf") format("truetype");
+}
+@font-face {
+    font-family: "PlusJakartaSans-ExtraBoldItalic";   /*Can be any text*/
+    src: local("PlusJakartaSans-ExtraBoldItalic"),
+      url("./fonts/PlusJakartaSans-ExtraBoldItalic.ttf") format("truetype");
+}
+@font-face {
+    font-family: "PlusJakartaSans-ExtraLight";   /*Can be any text*/
+    src: local("PlusJakartaSans-ExtraLight"),
+      url("./fonts/PlusJakartaSans-ExtraLight.ttf") format("truetype");
+}
+@font-face {
+    font-family: "PlusJakartaSans-ExtraLight";   /*Can be any text*/
+    src: local("PlusJakartaSans-ExtraLight"),
+      url("./fonts/PlusJakartaSans-ExtraLight.ttf") format("truetype");
+}
+@font-face {
+    font-family: "PlusJakartaSans-ExtraLightItalic";   /*Can be any text*/
+    src: local("PlusJakartaSans-ExtraLightItalic"),
+      url("./fonts/PlusJakartaSans-ExtraLightItalic.ttf") format("truetype");
+}
+@font-face {
+    font-family: "PlusJakartaSans-Italic";   /*Can be any text*/
+    src: local("PlusJakartaSans-Italic"),
+      url("./fonts/PlusJakartaSans-Italic.ttf") format("truetype");
+}
+@font-face {
+    font-family: "PlusJakartaSans-Light";   /*Can be any text*/
+    src: local("PlusJakartaSans-Light"),
+      url("./fonts/PlusJakartaSans-Light.ttf") format("truetype");
+}
+@font-face {
+    font-family: "PlusJakartaSans-LightItalic";   /*Can be any text*/
+    src: local("PlusJakartaSans-LightItalic"),
+      url("./fonts/PlusJakartaSans-LightItalic.ttf") format("truetype");
+}
+@font-face {
+    font-family: "PlusJakartaSans-Medium";   /*Can be any text*/
+    src: local("PlusJakartaSans-Medium"),
+      url("./fonts/PlusJakartaSans-Medium.ttf") format("truetype");
+}
+@font-face {
+    font-family: "PlusJakartaSans-MediumItalic";   /*Can be any text*/
+    src: local("PlusJakartaSans-MediumItalic"),
+      url("./fonts/PlusJakartaSans-MediumItalic.ttf") format("truetype");
+}
+@font-face {
+    font-family: "PlusJakartaSans-Regular";   /*Can be any text*/
+    src: local("PlusJakartaSans-Regular"),
+      url("./fonts/PlusJakartaSans-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "PlusJakartaSans-SemiBold";   /*Can be any text*/
+    src: local("PlusJakartaSans-SemiBold"),
+      url("./fonts/PlusJakartaSans-SemiBold.ttf") format("truetype");
+}
+@font-face {
+    font-family: "PlusJakartaSans-SemiBoldItalic";   /*Can be any text*/
+    src: local("PlusJakartaSans-SemiBoldItalic"),
+      url("./fonts/PlusJakartaSans-SemiBoldItalic.ttf") format("truetype");
+}
