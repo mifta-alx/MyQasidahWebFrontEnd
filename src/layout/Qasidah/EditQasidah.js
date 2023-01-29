@@ -17,11 +17,11 @@ export default function EditQasidah() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [error, setError] = useState([]);
-  const param = error.map((data)=> data.param)
+  const param = error.map((data) => data.param);
 
   useEffect(() => {
     const getQasidahById = async () => {
-      const res = await axios.get(`https://myqasidah.up.railway.app/qasidahs/${id}`);
+      const res = await axios.get(`http://localhost:3001/qasidahs/${id}`);
       setTitle(res.data.title);
       setTitleArabic(res.data.title_arabic);
       setVersion(res.data.version);
@@ -38,7 +38,7 @@ export default function EditQasidah() {
     const textreff = reff.map(({ parent, reff }) => ({ parent, reff }));
     const textlirik = lirik.map(({ parent, lirik }) => ({ parent, lirik }));
     try {
-     const res = await axios.put(`http://localhost:3001/qasidahs/${id}`, {
+      const res = await axios.put(`http://localhost:3001/qasidahs/${id}`, {
         title,
         title_arabic,
         version,
@@ -46,7 +46,9 @@ export default function EditQasidah() {
         textreff,
         textlirik,
       });
-      navigate(`/qasidah/detail/${id}`, {state : {status : res.status, message : res.data.message}});
+      navigate(`/qasidah/detail/${id}`, {
+        state: { status: res.status, message: res.data.message },
+      });
     } catch (e) {
       setError(e.response.data.message);
       console.log(e);
@@ -230,13 +232,13 @@ export default function EditQasidah() {
       </nav>
       <div className="w-full p-4 mt-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 ">
         <form onSubmit={handleSubmit}>
-        <div className="mb-6">
+          <div className="mb-6">
             <div className="relative">
               <input
                 type="text"
                 id="floating_outlined"
                 className={`block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg border border-1 appearance-none focus:outline-none focus:ring-0 peer ${
-                  param.includes('title') 
+                  param.includes("title")
                     ? " border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500"
                     : "bg-transparent border-gray-300 text-gray-900 focus:border-gray-600"
                 }`}
@@ -247,13 +249,13 @@ export default function EditQasidah() {
               <label
                 htmlFor="floating_outlined"
                 className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0]  px-2 peer-focus:px-2 peer-focus:text-geay-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1 bg-white ${
-                  param.includes('title')  ? "text-red-700" : "text-gray-500"
+                  param.includes("title") ? "text-red-700" : "text-gray-500"
                 }`}
               >
                 Judul Qasidah
               </label>
             </div>
-            {param.includes('title') && (
+            {param.includes("title") && (
               <p className="mt-2 text-sm text-red-600">
                 <span className="font-medium">Oops!</span> Judul qasidah harus
                 diisi!
@@ -266,7 +268,7 @@ export default function EditQasidah() {
                 type="text"
                 id="floating_outlined"
                 className={`block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg border border-1 appearance-none focus:outline-none focus:ring-0 peer ${
-                  param.includes('title_arabic') 
+                  param.includes("title_arabic")
                     ? " border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500"
                     : "bg-transparent border-gray-300 text-gray-900 focus:border-gray-600"
                 }`}
@@ -277,13 +279,15 @@ export default function EditQasidah() {
               <label
                 htmlFor="floating_outlined"
                 className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0]  px-2 peer-focus:px-2 peer-focus:text-geay-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1 bg-white ${
-                  param.includes('title_arabic')  ? "text-red-700" : "text-gray-500"
+                  param.includes("title_arabic")
+                    ? "text-red-700"
+                    : "text-gray-500"
                 }`}
               >
                 Judul Arab
               </label>
             </div>
-            {param.includes('title_arabic')  && (
+            {param.includes("title_arabic") && (
               <p className="mt-2 text-sm text-red-600">
                 <span className="font-medium">Oops!</span> Judul arab qasidah
                 harus diisi!
@@ -296,7 +300,7 @@ export default function EditQasidah() {
                 type="text"
                 id="floating_outlined"
                 className={`block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg border border-1 appearance-none focus:outline-none focus:ring-0 peer ${
-                  param.includes('version')
+                  param.includes("version")
                     ? " border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500"
                     : "bg-transparent border-gray-300 text-gray-900 focus:border-gray-600"
                 }`}
@@ -307,13 +311,13 @@ export default function EditQasidah() {
               <label
                 htmlFor="floating_outlined"
                 className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0]  px-2 peer-focus:px-2 peer-focus:text-geay-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1 bg-white ${
-                  param.includes('version') ? "text-red-700" : "text-gray-500"
+                  param.includes("version") ? "text-red-700" : "text-gray-500"
                 }`}
               >
                 Versi
               </label>
             </div>
-            {param.includes('version') && (
+            {param.includes("version") && (
               <p className="mt-2 text-sm text-red-600">
                 <span className="font-medium">Oops!</span> Versi qasidah harus
                 diisi!
@@ -433,20 +437,22 @@ export default function EditQasidah() {
                         </div>
                       </div>
                       {reff.length !== 1 && (
-                        <button
+                        <a
+                          href={() => false}
                           onClick={() => handleRemoveParentReff(index)}
                           className="px-3.5 justify-center items-center flex ml-3 rounded-lg text-red-500 hover:text-white border border-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-500 "
                         >
                           <FiTrash size={18} />
-                        </button>
+                        </a>
                       )}
                       {reff.length - 1 === index && (
-                        <button
+                        <a
+                          href={() => false}
                           onClick={() => handleAddParentReff()}
                           className="px-3 justify-center text-primary items-center flex ml-3 border border-primary rounded-lg hover:bg-primary hover:text-white focus:ring-4 focus:outline-none focus:ring-primary"
                         >
                           <FiPlus size={22} />
-                        </button>
+                        </a>
                       )}
                     </div>
                     {data.reff.map((reff, indexsub) => {
@@ -471,13 +477,14 @@ export default function EditQasidah() {
                               </label>
                             </div>
                           </div>
-                          <button
+                          <a
+                            href={() => false}
                             onClick={() => handleRemoveSubReff(indexsub, index)}
                             className="px-3.5 justify-center items-center flex ml-3 rounded-lg text-red-500 hover:text-white border border-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-500 "
                           >
                             <FiTrash size={18} className="mr-2" />
                             Subreff
-                          </button>
+                          </a>
                         </div>
                       );
                     })}
@@ -518,12 +525,13 @@ export default function EditQasidah() {
                         </div>
                       </div>
                       {lirik.length !== 1 && (
-                        <button
+                        <a
+                          href={() => false}
                           onClick={() => handleRemoveParentLirik(index)}
-                          className="px-3.5 justify-center items-center flex ml-3 rounded-lg text-red-500 hover:text-white border border-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-500 "
+                          className="px-3.5 justify-center text-sm items-center flex ml-3 rounded-lg text-red-500 hover:text-white border border-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-500 "
                         >
                           <FiTrash size={18} />
-                        </button>
+                        </a>
                       )}
                       {lirik.length - 1 === index && (
                         <a
@@ -556,15 +564,16 @@ export default function EditQasidah() {
                               </label>
                             </div>
                           </div>
-                          <button
+                          <a
+                            href={() => false}
                             onClick={() =>
                               handleRemoveSubLirik(indexsub, index)
                             }
-                            className="px-3.5 justify-center items-center flex ml-3 rounded-lg text-red-500 hover:text-white border border-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-500 "
+                            className="px-3.5 justify-center items-center text-sm flex ml-3 rounded-lg text-red-500 hover:text-white border border-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-500 "
                           >
                             <FiTrash size={18} className="mr-2" />
                             Sublirik
-                          </button>
+                          </a>
                         </div>
                       );
                     })}

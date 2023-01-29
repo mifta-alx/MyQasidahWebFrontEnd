@@ -29,7 +29,7 @@ const Qasidah = () => {
 
   const getUsers = async () => {
     try {
-      const response = await axios.get("https://myqasidah.up.railway.app/qasidahs");
+      const response = await axios.get("http://localhost:3001/qasidahs");
       setData(response.data);
     } catch (e) {
       console.log(e);
@@ -259,16 +259,16 @@ const Qasidah = () => {
                         </td>
                         <th
                           scope="row"
-                          className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+                          className="px-6 py-4 font-pjs-medium text-gray-900 whitespace-nowrap "
                         >
                           {dataQasidah.title}
                         </th>
-                        <td className="px-6 py-4">
+                        <td className="px-6 py-4 font-pjs-bold">
                           {dataQasidah.title_arabic}
                         </td>
-                        <td className="px-6 py-4">{dataQasidah.version}</td>
-                        <td className="px-6 py-4">{dataQasidah.tipe}</td>
-                        <td className="px-6 py-4">
+                        <td className="px-6 py-4 font-pjs-regular">{dataQasidah.version}</td>
+                        <td className="px-6 py-4 font-pjs-regular">{dataQasidah.tipe}</td>
+                        <td className="px-6 py-4 font-pjs-regular">
                           <Link
                             to={`detail/${dataQasidah._id}`}
                             className="font-pjs-medium text-primary hover:underline"

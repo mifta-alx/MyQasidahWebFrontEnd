@@ -26,7 +26,7 @@ function DetailQasidah() {
 
   useEffect(() => {
     const getQasidahById = async () => {
-      const res = await axios.get(`https://myqasidah.up.railway.app/qasidahs/${id}`);
+      const res = await axios.get(`http://localhost:3001/qasidahs/${id}`);
       setTitle(res.data.title);
       setTitleArabic(res.data.title_arabic);
       setVersion(res.data.version);
@@ -50,7 +50,7 @@ function DetailQasidah() {
 
   const deleteQasidah = async () => {
     try {
-      const res = await axios.delete(`https://myqasidah.up.railway.app/qasidahs/${id}`);
+      const res = await axios.delete(`http://localhost:3001/qasidahs/${id}`);
       navigate("/qasidah", { state: {status : res.status, message : res.data.message}});
     } catch (e) {
       console.log(e);
@@ -201,7 +201,7 @@ function DetailQasidah() {
                       if (data.reff.length > 1) {
                         return (
                           <div className={styleDot} key={indexsub}>
-                            <p className="text-base md:text-3xl">
+                            <p className="text-sm sm:text-base font-pjs-medium md:text-3xl">
                               {subr.subreff}
                             </p>
                           </div>
@@ -233,7 +233,7 @@ function DetailQasidah() {
                       if (data.lirik.length > 1) {
                         return (
                           <div className={styleDot} key={indexsub}>
-                            <p className="text-base md:text-3xl">
+                            <p className="text-sm sm:text-base font-pjs-medium md:text-3xl">
                               {subl.sublirik}
                             </p>
                           </div>
