@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter,
   RouterProvider,
-  BrowserRouter
 } from "react-router-dom";
 import Root from './routes/root'
-import { ErrorPage, Home, Kitab, Qasidah } from './layout';
-import AddQasidah from './layout/Qasidah/AddQasidah';
-import DetailQasidah from './layout/Qasidah/DetailQasidah';
-import EditQasidah from './layout/Qasidah/EditQasidah';
+import { ErrorPage, Home, Kitab, Qasidah , AddQasidah, DetailQasidah, EditQasidah, Login, Register, AddKitab, DetailKitab, EditKitab} from './layout';
+import { Nav } from './components';
+import { createStore, compose, applyMiddleware} from 'redux'
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk'
+import reducers from './reducers'
+
+const store = createStore(reducers, compose(applyMiddleware(thunk)))
 
 const router = createBrowserRouter([
   {
@@ -41,13 +44,41 @@ const router = createBrowserRouter([
         path: "kitab",
         element: <Kitab />,
       },
+      {
+        path: "kitab/add",
+        element: <AddKitab />,
+      },
+      {
+        path: "kitab/detail/:id",
+        element: <DetailKitab />,
+      },
+      {
+        path: "kitab/edit/:id",
+        element: <EditKitab />,
+      },
     ],
+  },
+  {
+    path: "/",
+    element: <Nav />,
+    children : [
+      {
+        path:"login",
+        element:<Login/>
+      },
+      {
+        path:"signup",
+        element:<Register/>
+      },
+    ]
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

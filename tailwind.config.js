@@ -42,6 +42,8 @@ module.exports = {
     extend: {
       fontFamily:{
         'pjs-bold' : ['PlusJakartaSans-Bold', 'sans-serif'],
+        'pjs-semibold' : ['PlusJakartaSans-SemiBold', 'sans-serif'],
+        'pjs-extrabold' : ['PlusJakartaSans-ExtraBold', 'sans-serif'],
         'pjs-regular' : ['PlusJakartaSans-Regular', 'sans-serif'],
         'pjs-medium' : ['PlusJakartaSans-Medium', 'sans-serif'],
       }

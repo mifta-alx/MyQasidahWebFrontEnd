@@ -7,8 +7,8 @@ export default function AddQasidah() {
   const [title, setTitle] = useState("");
   const [title_arabic, setTitleArabic] = useState("");
   const [version, setVersion] = useState("");
-  const [error, setError] = useState([]);
-  const param = error.map((data) => data.param);
+  const [param, setParam] = useState([]);
+  const [msg, setMsg] = useState([]);
   const [reff, setReff] = useState([
     {
       parent: "baris_1",
@@ -44,9 +44,13 @@ export default function AddQasidah() {
         state: { status: res.status, message: res.data.message },
       });
     } catch (e) {
-      setError(e.response.data.message);
-      console.log(e);
+      handleMsg(e.response.data.param, e.response.data.message);
+      console.log(e.response);
     }
+  };
+  const handleMsg = (paramVal, msgVal) => {
+    setParam(paramVal);
+    setMsg(msgVal);
   };
   //add Dynamical Multiple Input parent Reff
   const handleAddParentReff = () => {
@@ -205,22 +209,22 @@ export default function AddQasidah() {
       </nav>
       <div className="w-full p-4 mt-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 ">
         <form onSubmit={handleSubmit}>
-          <div className="mb-6">
+          <div className={param.includes("title") ? "mb-4" : "mb-6"}>
             <div className="relative">
               <input
                 type="text"
-                id="floating_outlined"
+                id="floating_outlined_title"
                 className={`block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg border border-1 appearance-none focus:outline-none focus:ring-0 peer ${
                   param.includes("title")
-                    ? " border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500"
-                    : "bg-transparent border-gray-300 text-gray-900 focus:border-gray-600"
+                    ? "border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500"
+                    : "bg-transparent border-gray-300 text-gray-900 focus:border-primary focus:ring-primary"
                 }`}
                 placeholder=" "
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
               <label
-                htmlFor="floating_outlined"
+                htmlFor="floating_outlined_title"
                 className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0]  px-2 peer-focus:px-2 peer-focus:text-geay-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1 bg-white ${
                   param.includes("title") ? "text-red-700" : "text-gray-500"
                 }`}
@@ -229,28 +233,27 @@ export default function AddQasidah() {
               </label>
             </div>
             {param.includes("title") && (
-              <p className="mt-2 text-sm text-red-600 dark:text-red-500">
-                <span className="font-medium">Oops!</span> Judul qasidah harus
-                diisi!
+              <p className="mt-2 text-xs text-red-600 ">
+                {msg.length < 36 ? msg[param.indexOf("title")] : msg}
               </p>
             )}
           </div>
-          <div className="mb-6">
+          <div className={param.includes("title_arabic") ? "mb-4" : "mb-6"}>
             <div className="relative">
               <input
                 type="text"
-                id="floating_outlined"
+                id="floating_outlined_title_arabic"
                 className={`block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg border border-1 appearance-none focus:outline-none focus:ring-0 peer ${
                   param.includes("title_arabic")
-                    ? " border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500"
-                    : "bg-transparent border-gray-300 text-gray-900 focus:border-gray-600"
+                  ? "border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500"
+                  : "bg-transparent border-gray-300 text-gray-900 focus:border-primary focus:ring-primary"
                 }`}
                 placeholder=" "
                 value={title_arabic}
                 onChange={(e) => setTitleArabic(e.target.value)}
               />
               <label
-                htmlFor="floating_outlined"
+                htmlFor="floating_outlined_title_arabic"
                 className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0]  px-2 peer-focus:px-2 peer-focus:text-geay-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1 bg-white ${
                   param.includes("title_arabic")
                     ? "text-red-700"
@@ -261,28 +264,27 @@ export default function AddQasidah() {
               </label>
             </div>
             {param.includes("title_arabic") && (
-              <p className="mt-2 text-sm text-red-600 dark:text-red-500">
-                <span className="font-medium">Oops!</span> Judul arab qasidah
-                harus diisi!
+              <p className="mt-2 text-xs text-red-600 ">
+                {msg.length < 36 ? msg[param.indexOf("title_arabic")] : msg}
               </p>
             )}
           </div>
-          <div className="mb-6">
+          <div className={param.includes("title_arabic") ? "mb-4" : "mb-6"}>
             <div className="relative">
               <input
                 type="text"
-                id="floating_outlined"
+                id="floating_outlined_verison"
                 className={`block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg border border-1 appearance-none focus:outline-none focus:ring-0 peer ${
                   param.includes("version")
-                    ? " border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500"
-                    : "bg-transparent border-gray-300 text-gray-900 focus:border-gray-600"
+                  ? "border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500"
+                  : "bg-transparent border-gray-300 text-gray-900 focus:border-primary focus:ring-primary"
                 }`}
                 placeholder=" "
                 value={version}
                 onChange={(e) => setVersion(e.target.value)}
               />
               <label
-                htmlFor="floating_outlined"
+                htmlFor="floating_outlined_verison"
                 className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0]  px-2 peer-focus:px-2 peer-focus:text-geay-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1 bg-white ${
                   param.includes("version") ? "text-red-700" : "text-gray-500"
                 }`}
@@ -291,9 +293,8 @@ export default function AddQasidah() {
               </label>
             </div>
             {param.includes("version") && (
-              <p className="mt-2 text-sm text-red-600 dark:text-red-500">
-                <span className="font-medium">Oops!</span> Versi qasidah harus
-                diisi!
+              <p className="mt-2 text-xs text-red-600 ">
+                {msg.length < 36 ? msg[param.indexOf("version")] : msg}
               </p>
             )}
           </div>
