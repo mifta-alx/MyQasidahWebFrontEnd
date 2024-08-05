@@ -32,7 +32,7 @@ function DetailQasidah() {
   useEffect(() => {
     dispatch(getUser());
     const getQasidahById = async () => {
-      const res = await axios.get(`https://myqasidah.up.railway.app/qasidahs/${id}`);
+      const res = await axios.get(`http://localhost:3001/qasidahs/${id}`);
       setTitle(res.data.title);
       setTitleArabic(res.data.title_arabic);
       setVersion(res.data.version);
@@ -55,7 +55,7 @@ function DetailQasidah() {
 
   const deleteQasidah = async () => {
     try {
-      const res = await axios.delete(`https://myqasidah.up.railway.app/qasidahs/${id}`);
+      const res = await axios.delete(`http://localhost:3001/qasidahs/${id}`);
       navigate("/qasidah", {
         state: { status: res.status, message: res.data.message },
       });

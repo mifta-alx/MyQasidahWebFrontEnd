@@ -1,13 +1,19 @@
 import React, {useState, useEffect} from "react";
 import { Mockup, GooglePlay, AppStore, ListDetail } from "../../assets";
 import { Icon } from "@iconify/react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function Home() {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, [])
   return (
     <>
       <div className="pt-8 md:pt-0 px-4 md:px-[100px] w-full">
         <div className="flex md:justify-between w-full justify-center">
-          <div className="flex flex-col justify-between max-w-lg md:mr-8">
+          <div className="flex flex-col justify-between max-w-lg md:mr-8" data-aos="fade-right" data-aos-duration="1500">
             <div className="flex flex-col flex-wrap max-w-md">
               <div className="text-[1.5rem] md:text-[2.5rem] lg:text-[48px] font-pjs-bold md:text-left text-center">
                 <p className="inline">Baca</p>
@@ -19,14 +25,14 @@ export default function Home() {
                 50+ Qasidah. Sekarang semua qasidah berada dalam genggamanmu.
               </p>
             </div>
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center mt-8" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1200">
               <img
                 src={Mockup}
                 className="md:hidden max-w-xs"
                 alt="iphoneImage"
               />
             </div>
-            <div className="flex flex-col lg:flex-row">
+            <div className="flex flex-col lg:flex-row" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1800">
               <div className="lg:max-w-[214px] md:text-left w-full text-center lg:mt-0 mt-8">
                 <p className="font-pjs-bold text-2xl md:text-[16px] lg:text-[30px]">
                   Download App Sekarang
@@ -36,7 +42,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="w-[2px] bg-gray-300 my-5 mx-16 lg:block hidden" />
-              <div className="flex lg:flex-col flex-row justify-center mt-4 lg:mt-0 mx-16 md:mx-0">
+              <div className="flex lg:flex-col flex-row justify-center mt-4 lg:mt-0 mx-16 md:mx-0" >
                 <a href={""}>
                   <img src={AppStore} alt="appStore" />
                 </a>
@@ -50,10 +56,12 @@ export default function Home() {
             src={Mockup}
             className="hidden md:block lg:max-w-lg md:max-w-sm"
             alt="iphoneImage"
+            data-aos="fade-left"
+            data-aos-duration="1500"
           />
         </div>
-        <div className="px-10 lg:px-[85px] pt-20 pb-10 md:pt-[140px] md:pb=[70px] flex flex-col lg:flex-row md:justify-between items-center w-full ">
-          <div className="flex flex-col flex-wrap lg:max-w-sm">
+        <div className="px-10 lg:px-[85px] pt-20 pb-10 md:py-[140px] flex flex-col lg:flex-row md:justify-between items-center w-full">
+          <div className="flex flex-col flex-wrap lg:max-w-sm" data-aos="fade-down" data-aos-duration="1500" >
             <p className="text-[14px] font-pjs-bold uppercase tracking-widest text-primary">
               multi platform
             </p>
@@ -68,7 +76,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-row mt-8 md:mt-12 lg:mt-0">
-            <div className="mt-4">
+            <div className="mt-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
               <div className="p-[18px] bg-white drop-shadow-md rounded-[15px] flex justify-center">
                 <Icon
                   icon="iconoir:www"
@@ -76,7 +84,7 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="ml-16 md:ml-20 mr-11 md:mr-[50px] mt-[100px]">
+            <div className="ml-16 md:ml-20 mr-11 md:mr-[50px] mt-[100px]" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="800">
               <div className="p-[18px] bg-white drop-shadow-md rounded-[15px] flex justify-center">
                 <Icon
                   icon="uil:android"
@@ -84,7 +92,7 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="">
+            <div className="" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1200">
               <div className="p-[18px] bg-white drop-shadow-md rounded-[15px] flex justify-center">
                 <Icon
                   icon="mdi:apple-ios"
@@ -94,15 +102,17 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="px-10 lg:px-[85px] pt-10 pb-20  md:pt-[70px] md:pb=[140px] flex flex-col lg:flex-row md:justify-between items-center w-full">
+        <div className="px-10 lg:px-[85px] pt-10 pb-20 md:py-[140px] flex flex-col lg:flex-row md:justify-between items-center w-full">
           <div>
             <img
               src={ListDetail}
               alt="listdetail"
               className="hidden lg:flex lg:max-w-sm"
+              data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"
             />
           </div>
-          <div className="flex flex-col flex-wrap lg:max-w-sm">
+          <div className="flex flex-col flex-wrap lg:max-w-sm" 
+              data-aos="fade-down" data-aos-duration="1500" >
             <p className="text-[14px] font-pjs-bold uppercase tracking-widest text-primary">
               mudah dan cepat
             </p>
@@ -128,7 +138,7 @@ export default function Home() {
         </div>
       </div>
       <div className="bg-other-gray py-10 md:py-[110px] justify-center items-center flex flex-col">
-        <div className="justify-center flex flex-col">
+        <div className="justify-center flex flex-col" data-aos="fade-up" data-aos-duration="2000" >
           <p className="font-pjs-bold text-2xl md:text-4xl text-center">
             Highlight features
           </p>
@@ -139,7 +149,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-col md:flex-row md:mt-16 items-center md:justify-between w-full px-10 lg:px-[260px]">
-          <div className="flex flex-row md:flex-col items-center w-full mt-8">
+          <div className="flex flex-row md:flex-col items-center w-full mt-8" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
             <div>
               <div className="bg-white rounded-full justify-center p-5 md:p-[30px] mx-0 md:mx-[26px] flex">
                 <Icon
@@ -157,7 +167,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex flex-row md:flex-col items-center w-full mt-8">
+          <div className="flex flex-row md:flex-col items-center w-full mt-8" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="800">
             <div>
               <div className="bg-white rounded-full justify-center p-5 md:p-[30px] mx-0 md:mx-[26px] flex">
                 <Icon
@@ -175,7 +185,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex flex-row md:flex-col items-center w-full mt-8">
+          <div className="flex flex-row md:flex-col items-center w-full mt-8" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1200">
             <div>
               <div className="bg-white rounded-full justify-center p-5 md:p-[30px] mx-0 md:mx-[26px] flex">
                 <Icon
@@ -197,7 +207,7 @@ export default function Home() {
       </div>
       <footer className="p-6 md:pt-16 md:px-8 lg:px-[190px] bg-white sm:p-6">
         <div className="md:flex md:justify-between">
-          <div className="md:mb-0 max-w-sm">
+          <div className="md:mb-0 max-w-sm" data-aos="fade-right" data-aos-duration="1500">
             <p className="font-pjs-bold text-2xl md:mb-11 mb-6">
               My<span className="inline text-primary">Qasidah</span>
             </p>
@@ -237,7 +247,7 @@ export default function Home() {
             </div>
           </div>
           <div className="md:grid grid-cols-2 gap-4 sm:gap-20 sm:grid-cols-3 hidden">
-            <div>
+            <div data-aos="fade-right" data-aos-duration="1500" data-aos-delay="500">
               <h2 className="mb-9 text-[18px] font-pjs-bold text-gray-900">
                 Technology
               </h2>
@@ -292,7 +302,7 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            <div>
+            <div data-aos="fade-right" data-aos-duration="1500" data-aos-delay="1000">
               <h2 className="mb-6 text-[18px] font-pjs-bold text-gray-900">
                 Follow us
               </h2>
@@ -315,7 +325,7 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            <div>
+            <div data-aos="fade-right" data-aos-duration="1500" data-aos-delay="1500">
               <h2 className="mb-6 text-[18px] font-pjs-bold text-gray-900">
                 Legal
               </h2>

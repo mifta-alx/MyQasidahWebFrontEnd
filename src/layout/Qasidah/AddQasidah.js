@@ -32,7 +32,7 @@ export default function AddQasidah() {
     const textreff = reff.map(({ parent, reff }) => ({ parent, reff }));
     const textlirik = lirik.map(({ parent, lirik }) => ({ parent, lirik }));
     try {
-      const res = await axios.post("https://myqasidah.up.railway.app/qasidahs", {
+      const res = await axios.post("http://localhost:3001/qasidahs", {
         title,
         title_arabic,
         version,

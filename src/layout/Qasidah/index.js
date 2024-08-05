@@ -38,7 +38,7 @@ const Qasidah = () => {
 
   const getQasidah = async () => {
     try {
-      const response = await axios.get("https://myqasidah.up.railway.app/qasidahs");
+      const response = await axios.get("http://localhost:3001/qasidahs");
       setData(response.data);
     } catch (e) {
       console.log(e);

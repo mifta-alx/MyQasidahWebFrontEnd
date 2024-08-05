@@ -24,7 +24,7 @@ export default function AddKitab() {
       text_of_page,
     }));
     try {
-      const res = await axios.post("https://myqasidah.up.railway.app/kitab", {
+      const res = await axios.post("http://localhost:3001/kitab", {
         title,
         title_arabic,
         pengarang,

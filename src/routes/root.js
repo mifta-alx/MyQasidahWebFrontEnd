@@ -23,7 +23,7 @@ export default function Nav() {
   // const handleLogout = async (e) => {
   //   e.preventDefault();
   //   try {
-  //     await axios.post("https://myqasidah.up.railway.app/logout").then(result => {
+  //     await axios.post("http://localhost:3001/logout").then(result => {
   //       if(result) {
   //         localStorage.removeItem('access_token')
   //         navigate("/");

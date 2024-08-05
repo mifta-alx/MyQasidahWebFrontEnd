@@ -33,7 +33,7 @@ function DetailKitab() {
   useEffect(() => {
     dispatch(getUser());
     const getKitabById = async () => {
-      const res = await axios.get(`https://myqasidah.up.railway.app/kitab/${id}`);
+      const res = await axios.get(`http://localhost:3001/kitab/${id}`);
       setTitle(res.data.title);
       setTitleArabic(res.data.title_arabic);
       setPengarang(res.data.pengarang)
@@ -55,7 +55,7 @@ function DetailKitab() {
 
   const deleteKitab = async () => {
     try {
-      const res = await axios.delete(`https://myqasidah.up.railway.app/kitab/${id}`);
+      const res = await axios.delete(`http://localhost:3001/kitab/${id}`);
       navigate("/kitab", {
         state: { status: res.status, message: res.data.message },
       });

@@ -30,7 +30,7 @@ const Kitab = () => {
 
   const getKitab = async () => {
     try {
-      const response = await axios.get("https://myqasidah.up.railway.app/kitab");
+      const response = await axios.get("http://localhost:3001/kitab");
       setData(response.data);
     } catch (e) {
       console.log(e);

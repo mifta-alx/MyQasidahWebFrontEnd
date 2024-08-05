@@ -15,7 +15,7 @@ export const getListQasidah = () => {
         })
 
         //get API
-        axios.get("https://myqasidah.up.railway.app/qasidahs", {timeout : 120000})
+        axios.get("http://localhost:3001/qasidahs", {timeout : 120000})
         .then((response) => {
             dispatch({
                 type : GET_LIST_QASIDAH,

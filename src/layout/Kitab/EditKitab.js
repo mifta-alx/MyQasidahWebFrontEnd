@@ -18,7 +18,7 @@ export default function EditKitab() {
   }, [id])
 
   const getKitabById = async () => {
-    const res = await axios.get(`https://myqasidah.up.railway.app/kitab/${id}`);
+    const res = await axios.get(`http://localhost:3001/kitab/${id}`);
     setTitle(res.data.title);
     setTitleArabic(res.data.title_arabic);
     setPengarang(res.data.pengarang);
@@ -32,7 +32,7 @@ export default function EditKitab() {
       text_of_page,
     }));
     try {
-      const res = await axios.put(`https://myqasidah.up.railway.app/kitab/${id}`, {
+      const res = await axios.put(`http://localhost:3001/kitab/${id}`, {
         title,
         title_arabic,
         pengarang,

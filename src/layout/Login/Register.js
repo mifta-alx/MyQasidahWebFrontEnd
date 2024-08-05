@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Mockup1 } from "../../assets";
 import { Link } from "react-router-dom";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Register = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [role, setRole] = useState("user");
+  const role = 'user'
   const refresh_token = ''
   const [param, setParam] = useState([]);
   const [msg, setMsg] = useState([]);
@@ -18,17 +20,24 @@ const Register = () => {
   const [errorEmail, setErrorEmail] = useState(false);
   const [empty, setEmpty] = useState(false);
 
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, [])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://myqasidah.up.railway.app/signup", {
+      const res = await axios.post("http://localhost:3001/signup", {
         username,
         email,
         password,
         role,
         refresh_token
       });
-      navigate("/login");
+      navigate("/login",  {
+        state: { status: res.status, message: res.data.message },
+      });
     } catch (e) {
       handleMsg(e.response.data.param, e.response.data.message);
       console.log(e.response);
@@ -69,10 +78,10 @@ const Register = () => {
   return (
     <div className="flex justify-center">
       <div className="md:grid grid-cols-2 gap-4 py-6 md:py-10 w-full md:px-3 lg:px-6 xl:px-12 ">
-        <div className="hidden md:flex justify-center ">
+        <div className="hidden md:flex justify-center" data-aos="fade-up" data-aos-duration="1500">
           <img src={Mockup1} className="max-w-xs lg:max-w-sm" alt="mockup" />
         </div>
-        <div className="md:px-10 xl:px-24">
+        <div className="md:px-10 xl:px-24" data-aos="fade-down" data-aos-duration="1500">
           <div className="md:drop-shadow-md bg-white px-8 py-6 rounded-lg">
             <div className="flex-col flex items-center mb-6">
               <p className="font-pjs-bold text-xl block">Daftar Sekarang</p>
@@ -92,7 +101,7 @@ const Register = () => {
                   <input
                     type="text"
                     id="floating_outlined_username"
-                    className={`block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg border border-1 appearance-none focus:outline-none focus:ring-1 focus:border-primary focus:ring-primary peer first-letter 
+                    className={`block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg border border-1 appearance-none focus:outline-none focus:ring-1 peer first-letter 
                     ${
                       param.includes("username")
                         ? "border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500"
@@ -106,8 +115,8 @@ const Register = () => {
                     htmlFor="floating_outlined_username"
                     className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0]  px-2 peer-focus:px-2 peer-focus:text-geay-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1 bg-white ${
                       param.includes("username")
-                        ? "text-red-700"
-                        : "text-gray-500"
+                      ? "text-red-700"
+                      : "text-gray-500 peer-focus:text-primary"
                     }`}
                   >
                     Username
@@ -124,7 +133,7 @@ const Register = () => {
                   <input
                     type="text"
                     id="floating_outlined_email"
-                    className={`block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg border border-1 appearance-none focus:outline-none focus:ring-1 focus:border-primary focus:ring-primary peer 
+                    className={`block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg border border-1 appearance-none focus:outline-none focus:ring-1 peer 
                     ${
                       param.includes("email") || errorEmail
                         ? "border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500"
@@ -138,7 +147,9 @@ const Register = () => {
                   <label
                     htmlFor="floating_outlined_email"
                     className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0]  px-2 peer-focus:px-2 peer-focus:text-geay-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1 bg-white ${
-                      param.includes("email") ? "text-red-700" : "text-gray-500"
+                      param.includes("email") || errorEmail
+                      ? "text-red-700"
+                      : "text-gray-500 peer-focus:text-primary"
                     }`}
                   >
                     Email
@@ -147,8 +158,8 @@ const Register = () => {
                 <p
                   className={`mt-2 text-xs ${
                     errorEmail || param.includes("email")
-                      ? "text-red-600"
-                      : "text-gray-400"
+                    ? "text-red-700"
+                    : "text-gray-500"
                   }`}
                 >
                   {param.includes("email")
@@ -165,7 +176,7 @@ const Register = () => {
                   <input
                     type={isShow ? "text" : "password"}
                     id="floating_outlined_password"
-                    className={`block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg border border-1 appearance-none focus:outline-none focus:ring-1 focus:border-primary focus:ring-primary peer 
+                    className={`block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg border border-1 appearance-none focus:outline-none focus:ring-1  peer 
                     ${
                       param.includes("password")
                         ? "border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500"
@@ -180,8 +191,8 @@ const Register = () => {
                     htmlFor="floating_outlined_password"
                     className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0]  px-2 peer-focus:px-2 peer-focus:text-geay-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1 bg-white ${
                       param.includes("password")
-                        ? "text-red-700"
-                        : "text-gray-500"
+                      ? "text-red-700"
+                      : "text-gray-500 peer-focus:text-primary"
                     }`}
                   >
                     Password
@@ -189,8 +200,8 @@ const Register = () => {
                   <a
                     className={`absolute top-4 z-10 right-1 px-2 cursor-pointer text-gray-500 ${
                       param.includes("password")
-                        ? "text-red-700"
-                        : "text-gray-500"
+                      ? "text-red-700"
+                      : "text-gray-500 peer-focus:text-primary"
                     }`}
                     onClick={() => setIsShow(!isShow)}
                   >

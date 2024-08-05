@@ -17,7 +17,7 @@ export const getUser = () => {
     });
     //get API
     axios
-      .get("https://myqasidah.up.railway.app/user", {
+      .get("http://localhost:3001/user", {
         headers: { Authorization: localStorage.getItem("access_token") },
       })
       .then((response) => {
@@ -55,7 +55,7 @@ export const refreshToken = () => {
     });
     //get API
     axios
-      .get("https://myqasidah.up.railway.app/token", {
+      .get("http://localhost:3001/token", {
         headers: { Authorization: localStorage.getItem("refresh_token") },
       })
       .then((response) => {
